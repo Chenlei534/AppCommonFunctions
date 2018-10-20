@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".loginmvpdemo.LoginActivity">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25"
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25"/>
+
+    <TextView
+        android:id="@+id/user_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:layout_margin="5dp"
+        android:text="账 号："
+        android:textSize="20sp"
+        app:layout_constraintLeft_toRightOf="@+id/guideline_v"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_h"
+
+        />
+
+    <EditText
+        android:id="@+id/user_et"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        app:layout_constraintLeft_toRightOf="@+id/user_tv"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_h"
+        />
+
+    <TextView
+        android:id="@+id/password_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:text="密 码："
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintVertical_bias="0.01"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_tv"
+        app:layout_constraintLeft_toRightOf="@+id/guideline_v"
+        />
+
+    <EditText
+        android:id="@+id/password_et"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:inputType="textPassword"
+        app:layout_constraintLeft_toRightOf="@+id/password_tv"
+        app:layout_constraintTop_toBottomOf="@+id/user_et"
+        android:layout_margin="5dp"
+        />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="登录"
+        android:layout_marginTop="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintTop_toBottomOf="@+id/password_et"
+        />
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="注册"
+        android:layout_marginTop="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintTop_toBottomOf="@+id/password_et"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
