@@ -6,20 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".loginmvpdemo.LoginActivity">
 
-    <android.support.constraint.Guideline
+    <androidx.support.constraint.Guideline
         android:id="@+id/guideline_h"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/user_tv"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintGuide_percent="0.25"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_v" />
 
-    <android.support.constraint.Guideline
+    <androidx.support.constraint.Guideline
         android:id="@+id/guideline_v"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.25"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/user_tv"
+        app:layout_constraintGuide_percent="0.25"
+        app:layout_constraintStart_toEndOf="@+id/guideline_h"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/user_tv"
