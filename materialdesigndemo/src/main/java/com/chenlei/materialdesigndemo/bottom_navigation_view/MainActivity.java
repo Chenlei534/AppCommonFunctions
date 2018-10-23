@@ -1,20 +1,25 @@
 package com.chenlei.materialdesigndemo.bottom_navigation_view;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.core.widget.NestedScrollView;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.chenlei.materialdesigndemo.R;
 import com.chenlei.materialdesigndemo.tab_layout.Fragment1;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private NoScrollViewPager viewPager;
     private BottomNavigationView bnv;
     private NestedScrollView nestedScrollView;
+    private DrawerLayout mDrawerLayout;
+    private NavigationView navigationView;
 
     private List<Fragment> list;
     private BottomViewAdapter bottomViewAdapter;
@@ -34,28 +41,58 @@ public class MainActivity extends AppCompatActivity {
 
     private MenuItem menuItem;
     private Toolbar mToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //工具条相关设置
         mToolbar=findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
-
+        ActionBar actionBar=getSupportActionBar();
+        if(actionBar!=null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        }
+//        getSupportActionBar().set
+        //初始化控件及fragment
         initFragment();
-
         bnv=findViewById(R.id.bottom_navigation_view);
         viewPager=findViewById(R.id.view_pager);
         nestedScrollView=findViewById(R.id.nested_scroll_view);
-
+     //   navigationView=findViewById(R.id.nav_view);
+        mDrawerLayout=findViewById(R.id.drawer_layout);
+        //设置viewpager相关参数
         bottomViewAdapter=new BottomViewAdapter(getSupportFragmentManager(),list);
         viewPager.setAdapter(bottomViewAdapter);
         viewPager.setOffscreenPageLimit(4); //设置ViewPager缓存个数
-        //设置禁止ViewPager滑动
-        viewPager.setScroll(false);
+        viewPager.setScroll(false);//设置禁止ViewPager滑动
+        //设置监听
         listener();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.setting:
+                Toast.makeText(MainActivity.this,"asdaf",Toast.LENGTH_SHORT).show();
+                break;
+            case android.R.id.home:
+           //     mDrawerLayout.openDrawer(GravityCompat.START);
+                break;
+        }
+        return true;
+    }
+
+    /**
+     * 监听
+     */
     private void listener(){
         //监听
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -110,6 +147,18 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId()){
+//                    case R.id.nav_task:
+//                        Toast.makeText(getApplicationContext(),"dianjile",Toast.LENGTH_SHORT).show();
+//                        break;
+//                }
+//                return false;
+//            }
+//        });
+
 //        //监听
 //        nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
 //            @Override
