@@ -1,6 +1,7 @@
 package com.chenlei.other.recycler_view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,11 +26,18 @@ public class RecyclerViewActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RVAdapter rvAdapter;
     private List<RecyclerViewItem> rviList=new ArrayList<>();
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
+
+        toolbar=findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("测试");
+
+
         //初始化数据、RecyclerView、数据适配器和布局管理
         initData();
         swipeRefreshLayout=findViewById(R.id.swipe_refresh_layout);
