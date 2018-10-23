@@ -42,7 +42,6 @@ public class Fragment1 extends Fragment {
         View view=inflater.inflate(R.layout.fragment1,container,false);
 
 
-
         initFragment();
         bottomViewAdapter=new BottomViewAdapter(getFragmentManager(),list);
 

@@ -26,7 +26,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private NoScrollViewPager viewPager;
     private BottomNavigationView bnv;
-    private CollapsingToolbarLayout collapsingToolbarLayout;
 
     private List<Fragment> list;
     private BottomViewAdapter bottomViewAdapter;
@@ -44,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         initUI();
         bottomViewAdapter=new BottomViewAdapter(getSupportFragmentManager(),list);
 
-        collapsingToolbarLayout=findViewById(R.id.collapsing_toolbar_layout);
         bnv=findViewById(R.id.bottom_navigation_view);
         viewPager=findViewById(R.id.view_pager);
         viewPager.setAdapter(bottomViewAdapter);
