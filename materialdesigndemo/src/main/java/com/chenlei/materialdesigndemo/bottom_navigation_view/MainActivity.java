@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.chenlei.materialdesigndemo.R;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     private MenuItem menuItem;
     private Toolbar mToolbar;
+    private LinearLayout linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +61,10 @@ public class MainActivity extends AppCompatActivity {
         initFragment();
         bnv=findViewById(R.id.bottom_navigation_view);
         viewPager=findViewById(R.id.view_pager);
-        nestedScrollView=findViewById(R.id.nested_scroll_view);
+    //    nestedScrollView=findViewById(R.id.nested_scroll_view);
+
      //   navigationView=findViewById(R.id.nav_view);
-        mDrawerLayout=findViewById(R.id.drawer_layout);
+    //    mDrawerLayout=findViewById(R.id.drawer_layout);
         //设置viewpager相关参数
         bottomViewAdapter=new BottomViewAdapter(getSupportFragmentManager(),list);
         viewPager.setAdapter(bottomViewAdapter);
