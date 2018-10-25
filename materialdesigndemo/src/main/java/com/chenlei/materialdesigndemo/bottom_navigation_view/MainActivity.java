@@ -4,16 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private NestedScrollView nestedScrollView;
     private DrawerLayout mDrawerLayout;
     private NavigationView navigationView;
+    private CoordinatorLayout coordinatorLayout;
 
     private List<Fragment> list;
     private BottomViewAdapter bottomViewAdapter;
@@ -61,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
         initFragment();
         bnv=findViewById(R.id.bottom_navigation_view);
         viewPager=findViewById(R.id.view_pager);
-    //    nestedScrollView=findViewById(R.id.nested_scroll_view);
+        coordinatorLayout=findViewById(R.id.coordinator_layout);
+        //    nestedScrollView=findViewById(R.id.nested_scroll_view);
 
      //   navigationView=findViewById(R.id.nav_view);
     //    mDrawerLayout=findViewById(R.id.drawer_layout);
@@ -162,26 +167,6 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-//        //监听
-//        nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
-//            @Override
-//            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-//                Log.e("Test","22222");
-//                //上滑 并且 正在显示底部栏
-//                if (scrollY - oldScrollY > 0 && isBottomShow) {
-//                    isBottomShow = false;
-//                    //将Y属性变为底部栏高度  (相当于隐藏了)
-//                    Log.e("Test","00000");
-//                    bnv.animate().translationY(bnv.getHeight());
-//                } else {
-//                    if (scrollY - oldScrollY < 0 && !isBottomShow) {
-//                        Log.e("Test","11111");
-//                        isBottomShow = true;
-//                        bnv.animate().translationY(0);
-//                    }
-//                }
-//            }
-//        });
     }
 
     private void initFragment(){
