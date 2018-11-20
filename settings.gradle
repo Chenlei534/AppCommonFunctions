@@ -1,2 +1,2 @@
-include ':app', ':mvpdemo', ':other', ':glidedemo', ':materialdesigndemo'
+include ':app', ':mvpdemo', ':other',  ':materialdesigndemo'
 
