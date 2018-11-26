@@ -18,27 +18,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 public class MainActivity extends AppCompatActivity {
-    private FloatingActionButton fab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fab=findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view,"弹出",Snackbar.LENGTH_SHORT)
-                        .setAction("cancel", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                //action消除后的响应事件
-                                Toast.makeText(getApplicationContext(), "12AB", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .show();
-            }
-        });
+
     }
 
 }

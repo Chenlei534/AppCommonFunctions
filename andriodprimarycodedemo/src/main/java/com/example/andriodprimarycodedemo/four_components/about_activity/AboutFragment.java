@@ -1,4 +1,4 @@
-package com.example.andriodprimarycodedemo.four_components;
+package com.example.andriodprimarycodedemo.four_components.about_activity;
 
 import android.content.Context;
 import android.os.Bundle;

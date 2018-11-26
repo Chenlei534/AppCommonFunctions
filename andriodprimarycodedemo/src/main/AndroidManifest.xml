@@ -8,15 +8,25 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".App"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".four_components.about_activity.AboutActivity">
+
+        </activity>
+        <activity android:name=".four_components.about_service.ServiceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".four_components.AboutActivity"></activity>
+        <service android:name=".four_components.about_service.StartService">
+
+        </service>
+        <service android:name=".four_components.about_service.BindService">
+
+        </service>
     </application>
 
 </manifest>
