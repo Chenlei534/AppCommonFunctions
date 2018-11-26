@@ -2,6 +2,8 @@ package com.example.andriodprimarycodedemo.four_components.about_service;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
@@ -11,9 +13,8 @@ import com.orhanobut.logger.Logger;
  * Create by chenlei on 2018-11-26
  */
 public class BindService extends Service {
-
     /**
-     * 服务绑定是调用
+     * 服务绑定时调用
      * onCreate()->onBind()
      * @param intent
      * @return
@@ -21,7 +22,8 @@ public class BindService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        return null;
+        //返回需要进行交互的类
+        return new MyService();
     }
 
     /**
@@ -68,5 +70,11 @@ public class BindService extends Service {
     public void onDestroy() {
         super.onDestroy();
         Logger.e("onDestory");
+    }
+
+    class MyService extends Binder{
+        public void serviceFuncation(String str){
+            Logger.e(str);
+        }
     }
 }

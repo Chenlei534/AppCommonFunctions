@@ -1,7 +1,10 @@
 package com.example.andriodprimarycodedemo.four_components.about_service;
 
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +23,8 @@ public class ServiceActivity extends AppCompatActivity {
     private Intent startServiceIntent;
     private Intent bindServiceIntent;
 
+    private ServiceConnection mServiceConnection;
+    private BindService.MyService myService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,14 +51,40 @@ public class ServiceActivity extends AppCompatActivity {
         mBindButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                bindServiceIntent=new Intent()
+                bindServiceIntent=new Intent(ServiceActivity.this,BindService.class);
+                bindService(bindServiceIntent,mServiceConnection,BIND_AUTO_CREATE);
             }
         });
         mUnbindButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                unbindService(mServiceConnection);
             }
         });
+        /**
+         *
+         *
+         *
+         * 与Service连接的类
+         */
+        mServiceConnection=new ServiceConnection() {
+            /**
+             * 与服务器端交互的接口方法 绑定服务的时候被回调，在这个方法获取绑定Service传递过来的IBinder对象，
+             * 通过这个IBinder对象，实现组件和Service的交互。
+             */
+            @Override
+            public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+                myService=(BindService.MyService)iBinder;
+                myService.serviceFuncation("haha");
+            }
+            /**
+             * 当取消绑定的时候不会被回调。正常情况下是不被调用的，它的调用时机是当Service服务被意外销毁时，
+             * 例如内存的资源不足时这个方法才被自动调用。
+             */
+            @Override
+            public void onServiceDisconnected(ComponentName componentName) {
+                myService=null;
+            }
+        };
     }
 }
