@@ -14,16 +14,21 @@ import com.example.andriodprimarycodedemo.R;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
+/**
+ * Create by chenlei on 2018-11-26
+ * 用来启动服务和绑定服务
+ */
 public class ServiceActivity extends AppCompatActivity {
     private Button mStartButton;
     private Button mStopButton;
     private Button mBindButton;
     private Button mUnbindButton;
-
+    //启动服务和绑定服务所需要的Intent
     private Intent startServiceIntent;
     private Intent bindServiceIntent;
-
+    //绑定服务时获取Service中Binder的类
     private ServiceConnection mServiceConnection;
+    //绑定服务时与Service交互的类
     private BindService.MyService myService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +39,7 @@ public class ServiceActivity extends AppCompatActivity {
         mStopButton=findViewById(R.id.stop_service_button);
         mBindButton=findViewById(R.id.bind_service_button);
         mUnbindButton=findViewById(R.id.unbind_service_button);
-
+        //监听事件
         mStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,9 +67,6 @@ public class ServiceActivity extends AppCompatActivity {
             }
         });
         /**
-         *
-         *
-         *
          * 与Service连接的类
          */
         mServiceConnection=new ServiceConnection() {

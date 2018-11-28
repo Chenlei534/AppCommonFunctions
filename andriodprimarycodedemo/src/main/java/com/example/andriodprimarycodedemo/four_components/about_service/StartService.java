@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
-import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
 
@@ -77,7 +76,7 @@ public class StartService extends Service {
     }
 
     /**
-     * 启动一个线程来计数
+     * 启动一个线程来计数模拟后台任务
      */
     private void startCount(){
         new Thread(new Runnable() {

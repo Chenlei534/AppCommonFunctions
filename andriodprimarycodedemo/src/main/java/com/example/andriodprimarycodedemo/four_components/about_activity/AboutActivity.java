@@ -18,21 +18,20 @@ import com.orhanobut.logger.Logger;
  */
 public class AboutActivity extends AppCompatActivity {
     /**
-     * avtivity启动创建时首先调用的方法
-     * @param savedInstanceState
+     * activity启动创建时首先调用的方法
+     * @param savedInstanceState 如果activity因为异常状态重建则saveInstanceState内保存销毁前状态否则为空
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
         //初始化日志打印工具
-        Logger.addLogAdapter(new AndroidLogAdapter());
         Logger.e("onCreate");
     }
 
     /**
      * activity在启动创建时调用 onCreate()->onStart()
-     * 或者在activity从后台不可见变为可见时调用 onRestart()->onStart()
+     * 或者在activity从后台不可见变为可见、解锁屏时调用 onRestart()->onStart()
      */
     @Override
     protected void onStart() {
@@ -42,7 +41,7 @@ public class AboutActivity extends AppCompatActivity {
 
     /**
      * activity在启动创建时调用 oneCreate()->onStart()->onResume()
-     * 或者在activity从前台被遮挡但是可见时变为不被遮挡、解锁屏时调用 onResume()
+     * 或者在activity从前台被遮挡但是可见时变为不被遮挡时调用 onResume()
      * 该方法调用结束后activity进入运行状态
      */
     @Override
@@ -52,7 +51,7 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     /**
-     * activity在运行时被弹窗遮挡但仍在前台或者锁屏时调用 onPause()
+     * activity在运行时被弹窗遮挡但仍在前台时调用 onPause()
      * 或者运行时打开新的activity后该activity转入后台时调用 onPause()
      * 或者运行时activity被销毁时调用 onPause()
      * 在启动新的activity时调用顺序：ActivityA:onPause()->ActivityB:onCreate()
@@ -64,12 +63,13 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     /**
-     * activity运行时打开新的activity后该activity转入后台时调用 onPause()->onStop()
+     * activity运行时打开新的activity后该activity转入后台或者锁屏时调用 onPause()->onStop()
      * 或者运行时activity被销毁时调用 onPause()->onStop()
      */
     @Override
     protected void onStop() {
         super.onStop();
+        Logger.e("onStop");
     }
 
     /**
@@ -95,7 +95,7 @@ public class AboutActivity extends AppCompatActivity {
      * 或者资源内存不足（优先级低的先被杀死，优先级：运行>前台>后台）被杀死时
      * 调用 onSaveInstanceState()->onStop()->onDestroy()
      * 用来保存activity状态，将activity的相关状态数据保存在Bundle中
-     * @param outState
+     * @param outState 保存销毁前activity的相关状态
      * @param outPersistentState
      */
     @Override
@@ -105,7 +105,7 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     /**
-     * 当activity在异常状态被杀死重建后调用 onCreate()->onRestoreInstanceState()
+     * 当activity在异常状态被杀死重建后调用 onCreate()->onStart()->onRestoreInstanceState()
      * 状态相关数据保存在Bundle中
      * @param savedInstanceState
      */
@@ -140,7 +140,7 @@ public class AboutActivity extends AppCompatActivity {
      * 如果在AndroidManifest.xml文件中配置了 android:configChanges="..."
      * 当系统配置发生改变时不会销毁activity然后重建但是会回调该方法
      * 当横竖品切换时需要在AndroidManifest.xml文件中相应节点配置
-     * android:configChanges="..."该方法
+     * android:configChanges="orientation"该方法
      * @param newConfig
      */
     @Override

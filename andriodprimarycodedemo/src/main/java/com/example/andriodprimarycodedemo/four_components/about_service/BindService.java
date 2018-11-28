@@ -72,7 +72,15 @@ public class BindService extends Service {
         Logger.e("onDestory");
     }
 
+    /**
+     * 建立内部类继承Binder实现与其他组件之间的通信
+     * 该类是其他组件与Seriver之间通信的桥梁
+     */
     class MyService extends Binder{
+        /**
+         * 打印其他组件中传入的字符串
+         * @param str
+         */
         public void serviceFuncation(String str){
             Logger.e(str);
         }

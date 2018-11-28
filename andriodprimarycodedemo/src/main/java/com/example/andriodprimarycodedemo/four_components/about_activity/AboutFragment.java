@@ -15,7 +15,8 @@ import com.orhanobut.logger.Logger;
 /**
  * Create by chenlei on 2018-11-26
  * 主要打印Fragment的生命周期与Activity生命周期的关系
- * 与Activity的调用关系：
+ * 与Activity的调用顺序：
+ * ------------------------------
  * Fragment onAttach()
  * Fragment onCreate()
  * Fragment onCreateView()
@@ -25,7 +26,9 @@ import com.orhanobut.logger.Logger;
  * Fragment onStart()
  * Activity onResume()
  * Fragment onResume()
- *  Fragment runing
+ * ------------------------------
+ *        Fragment runing
+ * ------------------------------
  * Fragment onPause()
  * Activity onPause()
  * Fragment onStop()
@@ -34,6 +37,7 @@ import com.orhanobut.logger.Logger;
  * Fragment onDestory()
  * Framgnet onDetach()
  * Activity onDestory()
+ * ------------------------------
  */
 public class AboutFragment extends Fragment {
 
@@ -41,7 +45,6 @@ public class AboutFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         //初始化日志打印工具
-        Logger.addLogAdapter(new AndroidLogAdapter());
         Logger.e("onAttach");
     }
 
