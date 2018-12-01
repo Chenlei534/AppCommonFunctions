@@ -19,17 +19,27 @@
             android:launchMode="singleTop">
 
         </activity>
-        <activity android:name=".four_components.about_service.ServiceActivity"></activity>
-
-        <service android:name=".four_components.about_service.StartService"></service>
-        <service android:name=".four_components.about_service.BindService"></service>
-
-        <activity android:name=".four_components.about_broadcastreceiver.BroadcastReceiverActivity">
+        <activity android:name=".four_components.about_service.ServiceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <service android:name=".four_components.about_service.StartService"></service>
+        <service android:name=".four_components.about_service.BindService"></service>
+        <!--服务设置成远程服务需要设置属性 android:process=":remote"-->
+        <!--因为设置成远程服务后不能显示启动所以设置actino节点，使得Service可以隐式启动-->
+        <service android:name=".four_components.about_service.BindRemoteService"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="com.example.andriodprimarycodedemo.MyAIDLService"/>
+            </intent-filter>
+        </service>
+
+        <activity android:name=".four_components.about_broadcastreceiver.BroadcastReceiverActivity">
+
         </activity>
 
         <receiver

@@ -42,6 +42,18 @@ public class StartService extends Service {
      * @param flags
      * @param startId
      * @return
+     *  返回值有四种：
+     *      START_STICKY：start_sticky
+     *          返回此值时Service被系统kill后，系统将会尝试重新创建Service，
+     *      并调用onStartCommand()方法，如果在此期间没有新的命令被传递到Service
+     *      则参数Intent为null
+     *      START_NOTE_STICKY：
+     *          返回值为该值时，如果Service被系统kill则系统不会自动重启该服务
+     *      START_REDELIVEER_INTENT：start_redeliveer_intent
+     *          返回此值时，如果Service被系统kill杀死，系统将自动重启该服务，并重新传递Intent
+     *      START_STICKY_COMPATIBILITY：start_sticky_compatibility
+     *          start_sticky的兼容版本并不保证kill后一定能重启
+     *      系统默认返回START_STICKY
      */
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {

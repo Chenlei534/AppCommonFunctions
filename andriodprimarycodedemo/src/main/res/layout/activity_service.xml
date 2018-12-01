@@ -34,4 +34,18 @@
         android:text="解绑服务"
         android:layout_below="@+id/bind_service_button"/>
 
+    <Button
+        android:id="@+id/bind_remote_service_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="绑定远程服务"
+        android:layout_below="@+id/unbind_service_button"/>
+
+    <Button
+        android:id="@+id/unbind_remote_service_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="解绑远程服务"
+        android:layout_below="@+id/bind_remote_service_button"/>
+
 </RelativeLayout>
