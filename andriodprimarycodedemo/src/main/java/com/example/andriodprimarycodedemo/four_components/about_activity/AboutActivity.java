@@ -125,8 +125,10 @@ public class AboutActivity extends AppCompatActivity {
      * android:launchMode="singleTop"
      *  如果activity在栈顶，启动时直接复用，否则新建
      * android:launchMode="singleTask"
-     *  如果activity在栈中，启动时则上面activity出栈，否则新建
-     * android:launchMode="singleTop"
+     *  1.如果taskAffinity值与当前栈名相同则在当前栈中新建Activity，
+     *  如果不同则根据taskAffinity的值新建一个任务栈并在该栈中新建Activity
+     *  2.如果activity在栈中，启动时则上面activity全部出栈，否则新建
+     * android:launchMode="singleInstance"
      *  activity单独的位于一个任务栈中
      * @param intent
      */
