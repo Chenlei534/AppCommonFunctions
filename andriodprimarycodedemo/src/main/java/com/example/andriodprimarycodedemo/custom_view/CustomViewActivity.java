@@ -17,6 +17,6 @@ public class CustomViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_view);
 
-        customBasicShapeView=findViewById(R.id.custom_basic_shape_view);
+//        customBasicShapeView=findViewById(R.id.custom_basic_shape_view);
     }
 }

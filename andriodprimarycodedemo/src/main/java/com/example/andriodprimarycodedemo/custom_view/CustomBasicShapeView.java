@@ -60,7 +60,7 @@ public class CustomBasicShapeView extends View {
     }
 
     /**
-     * 初始化画笔和画布
+     * 初始化画笔
      */
     private void initPaint(){
         mPaint=new Paint();

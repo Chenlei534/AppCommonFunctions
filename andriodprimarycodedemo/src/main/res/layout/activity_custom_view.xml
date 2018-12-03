@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".custom_view.CustomViewActivity">
 
-    <com.example.andriodprimarycodedemo.custom_view.CustomBasicShapeView
+    <com.example.andriodprimarycodedemo.custom_view.CustomCanvasView
         android:id="@+id/custom_basic_shape_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

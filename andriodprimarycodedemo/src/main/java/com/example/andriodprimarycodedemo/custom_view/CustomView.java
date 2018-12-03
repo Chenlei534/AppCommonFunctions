@@ -39,7 +39,7 @@ public class CustomView extends View {
     }
 
     /**
-     * 用来测量View大小
+     * 用来测量View大小1
      * 测量模式：
      *      UNSPECIFIED：00 unspecified
      *          默认值，父控件没有给子View任何限制，子View可以设置为任意大小
