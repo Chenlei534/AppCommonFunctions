@@ -12,6 +12,10 @@ import com.orhanobut.logger.Logger;
 /**
  * 设置成远程服务
  * 并与Activity绑定
+ * 远程服务：
+ *  独立进程，不受其他进程影响，可以为其他应用程序提供调用接口。
+ *  相对对普通服务占用系统资源较多，使用IPC和AIDL相对麻烦
+ *  适用于系统常驻Service如天气服务等
  */
 public class BindRemoteService extends Service {
     @Nullable
