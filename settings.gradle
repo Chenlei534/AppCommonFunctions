@@ -1,2 +1,2 @@
-include ':app', ':mvpdemo', ':other',  ':materialdesigndemo', ':andriodprimarycodedemo'
+include ':app', ':mvpdemo', ':other',  ':materialdesigndemo', ':androidprimarycodedemo'
 
